@@ -1,4 +1,4 @@
-# @animeshmitra08/react-native-ui-kit
+# @Animeshmitra08/react-native-ui-kit
 
 A typed, themeable React Native UI component library.
 
@@ -8,22 +8,29 @@ This package is published to **GitHub Packages**. GitHub Packages requires authe
 
 1. Create a GitHub [personal access token (classic)](https://github.com/settings/tokens) with the `read:packages` scope.
 
-2. Add the token to your **user-level** `~/.npmrc` (never commit it):
+2. Expose the token as the `GITHUB_PACKAGES_TOKEN` environment variable:
 
-   ```ini
-   //npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
+   ```bash
+   # macOS / Linux
+   export GITHUB_PACKAGES_TOKEN=ghp_yourtoken
    ```
 
-3. In your app's project root, create or extend `.npmrc` so the scope resolves to GitHub:
+   ```powershell
+   # Windows (persists for new terminals)
+   setx GITHUB_PACKAGES_TOKEN ghp_yourtoken
+   ```
+
+3. In your app's project root, create or extend `.npmrc` (the scope must be lowercase):
 
    ```ini
-   @animeshmitra08:registry=https://npm.pkg.github.com
+   @Animeshmitra08:registry=https://npm.pkg.github.com
+   //npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_TOKEN}
    ```
 
 4. Install:
 
    ```bash
-   npm install @animeshmitra08/react-native-ui-kit
+   npm install @Animeshmitra08/react-native-ui-kit
    ```
 
 ### Install directly from Git
@@ -47,7 +54,7 @@ npm install react react-native
 Wrap your app with the `ThemeProvider`:
 
 ```tsx
-import { ThemeProvider, Button, TextInput, Card } from '@animeshmitra08/react-native-ui-kit';
+import { ThemeProvider, Button, TextInput, Card } from '@Animeshmitra08/react-native-ui-kit';
 
 export default function App() {
   return (
@@ -83,7 +90,7 @@ export default function App() {
 Built-in `lightTheme` and `darkTheme` are provided. You can also pass a custom `Theme` object:
 
 ```tsx
-import { ThemeProvider, lightTheme } from '@animeshmitra08/react-native-ui-kit';
+import { ThemeProvider, lightTheme } from '@Animeshmitra08/react-native-ui-kit';
 
 const myTheme = {
   ...lightTheme,
@@ -98,7 +105,7 @@ const myTheme = {
 Use the `useTheme()` hook inside any component to access the current theme:
 
 ```tsx
-import { useTheme } from '@animeshmitra08/react-native-ui-kit';
+import { useTheme } from '@Animeshmitra08/react-native-ui-kit';
 
 function MyComponent() {
   const { theme, isDark, toggleTheme } = useTheme();
@@ -124,7 +131,7 @@ Publishing is automated by [`.github/workflows/publish.yml`](.github/workflows/p
 2. Push the commit and tag: `git push --follow-tags`.
 3. Create a GitHub Release from the tag — the workflow builds and publishes to GitHub Packages.
 
-To publish manually instead, add a token with the `write:packages` scope to `~/.npmrc` and run `npm publish`.
+To publish manually instead, set `GITHUB_PACKAGES_TOKEN` to a token with the `write:packages` scope and run `npm publish`.
 
 ## License
 
