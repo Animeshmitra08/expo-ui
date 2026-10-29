@@ -1,5 +1,5 @@
 {
-  "name": "rn-ui-kit",
+  "name": "@animeshmitra08/react-native-ui-kit",
   "version": "1.0.0",
   "description": "A reusable React Native UI component library",
   "main": "dist/index.js",
@@ -12,7 +12,19 @@
     "build": "tsup && tsc -p tsconfig.dts.json && rollup -c rollup.dts.config.mjs && rimraf .dts-tmp",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Animeshmitra08/expo-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Animeshmitra08/expo-ui/issues"
+  },
+  "homepage": "https://github.com/Animeshmitra08/expo-ui#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "react-native",
@@ -20,6 +32,7 @@
     "components",
     "kit"
   ],
+  "author": "Animeshmitra08",
   "license": "MIT",
   "peerDependencies": {
     "react": ">=18.0.0",
